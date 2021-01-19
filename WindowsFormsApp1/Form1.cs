@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
             for (int num = 0; num < SerialPortNames.Length; num++)
             {
 
-             
+
                 SerialPorts[num] = new SerialPort();
                 SerialPorts[num].DataReceived += new SerialDataReceivedEventHandler(recievedata);//绑定事件
                 SerialPorts[num].PortName = SerialPortNames[num];
@@ -47,22 +47,40 @@ namespace WindowsFormsApp1
                 SerialPorts[num].Parity = Parity.None;
                 SerialPorts[num].DataBits = 8;
                 SerialPorts[num].StopBits = StopBits.One;
-                SerialPorts[num].Open();
+                try
+                {
+                    SerialPorts[num].Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(SerialPorts[num].PortName.ToString() + " 打开失败...");
+                }
+
             }
         }
 
 
 
+        private string AsciiCodeToString(byte[] asciiCode)
+        {
+            string retString = "";
+            ASCIIEncoding ae = new ASCIIEncoding();
+            retString = ae.GetString(asciiCode);
+            return retString;
+        }
 
 
 
         private byte[] strToHexByte(string hexString)             //字符串转换为byte[]
         {
-            hexString = hexString.Replace(" ", "");
-            if ((hexString.Length % 2) != 0) hexString += " ";
-            byte[] returnBytes = new byte[hexString.Length / 2];
+
+
+            byte[] returnBytes = new byte[hexString.Length];
             for (int i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2).Replace(" ", ""), 16);
+            {
+                returnBytes[i] = Convert.ToByte(hexString[i]);
+            }
+
             return returnBytes;
         }
 
@@ -74,14 +92,15 @@ namespace WindowsFormsApp1
             byte[] ReDatas = new byte[((SerialPort)sender).BytesToRead];
             ((SerialPort)sender).Read(ReDatas, 0, ReDatas.Length);//读取数据
 
-            MessageBox.Show("serial port "+ ((SerialPort)sender).PortName.ToString()+" recieved data: "+ReDatas[0].ToString());
+            MessageBox.Show("serial port " + ((SerialPort)sender).PortName.ToString() + " recieved data: " + AsciiCodeToString(ReDatas));
 
         }
 
         private void buttonSendData_Click(object sender, EventArgs e)
         {
-            byte[] data = { 0x9 };
-          
+            string sendString = textBoxSendData.Text;
+            byte[] data = strToHexByte(sendString);
+
             for (int num = 0; num < SerialPortNames.Length; num++)
             {
                 if (SerialPorts[num].IsOpen)
