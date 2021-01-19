@@ -1,0 +1,10 @@
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\SerialPortSetupWithCode.csproj.GenerateResource.Cache
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\SerialPortSetupWithCode.csprojAssemblyReference.cache
+D:\VsProject\SerialPortSetupWithCode\WindowsFormsApp1\obj\Debug\SerialPortSetupWithCode.csproj.CoreCompileInputs.cache
